@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+
+kind: Deployment
+metadata:
+  name: api-temperatura
+spec:
+  selector:
+    matchLabels:
+      app: api
+  template:
+    metadata:
+      labels:
+        app: api
+    spec:
+      containers:
+      - name: api-temperatura
+        image: ellisonalencar/conversao-temperatura:1.1
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 8080
+         
+        imagePullPolicy: Always
+        
